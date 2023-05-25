@@ -1,4 +1,4 @@
-# **mora-gradle-groovy-jar-template-001**
+# **mora-gradle-groovy-jar-template**
 This project created for <Gradle Groovy Template>
 Tutorial:   
 Author: _SLMORA_  
