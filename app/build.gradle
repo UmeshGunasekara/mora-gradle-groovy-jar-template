@@ -275,6 +275,36 @@ task hello{
 //    }
 }
 
+task writeHello{
+    group 'MORA'
+    description 'Test Write Hello Task'
+
+//    4.times{
+//        println "Counter print $it"
+//    }
+//    doLast{
+//        if (project.hasProperty("doHello")) {
+//            hello2.finalizedBy hello
+//        }
+//    }
+    outputs.file file('hello.txt')
+    doLast{
+        file('hello.txt').text = "hello"
+    }
+}
+
+hello.doLast{println "Appending with ."}
+
+task conditionalTask(){
+    group 'MORA'
+    description 'Test Conditional Task'
+    onlyIf {!file("hello.txt").exists()}
+    doFirst{
+        println "Condition True hello.txt is Not exists"
+        file('hello.txt').text = "hello"
+    }
+}
+
 task runJar(type:Exec, dependsOn:jar){
     group 'MORA'
     description 'Run the generated jar, this task depends on the jar task'
